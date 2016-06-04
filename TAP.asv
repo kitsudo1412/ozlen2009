@@ -1,4 +1,4 @@
-function [ solutionTable ] = TAP( n )
+function [ values, solutions ] = TAP( n )
 %TAP Tri-objective assignment problem
 %   We considered a n by n problem instance
 
@@ -44,6 +44,10 @@ while 1
     values = [values;CWBOIPValues];
     solutions = [solutions;CWBOIPSolutions];
     
+    disp(values);
+    disp(solutions);
+    pause(5);
+    
     [numOfSolutions, nAlias] = size(CWBOIPSolutions);
     
     l3 = calculateCost(coefficientMatrix(:,:,3), CWBOIPSolutions(1, :));
@@ -56,10 +60,7 @@ while 1
         end
     end
     
-    l3 = l3 - 1;
+    disp(['l3 = ' l3]);
 end
-
-solutionTable = [values solutions];
-solutionTable = unique(solutionTable, 'rows');
 
 end

@@ -1,0 +1,23 @@
+function [ result ] = solveCWSOIP( C1, C2, w2, l2 )
+
+CMatrix = C1 + w2 * C2;
+[c, p] = allcosts(CMatrix);
+
+[y, mapping] = sort(c);
+
+i = 1;
+while i <= size(C1)
+    currentSolution = p(mapping(i), :);
+    if (calculateCost(C2, currentSolution) > l2)
+        i = i + 1;
+    else
+        result = currentSolution;
+        break
+    end
+end
+
+end
+
+function [result] = calculateCost(C, v)
+    
+end
