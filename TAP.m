@@ -59,7 +59,12 @@ while 1
     l3 = l3 - 1;
 end
 
-solutionTable = [values solutions];
-solutionTable = unique(solutionTable, 'rows');
+solutionTable = [];
+
+[C, ia, ic] = unique(solutions, 'rows');
+ia = sort(ia);
+for i = 1 : length(ia)
+    solutionTable = [solutionTable; values(ia(i), :) calculateCost(coefficientMatrix(:,:,3), solutions(ia(i), :)) solutions(ia(i), :)];
+end
 
 end
