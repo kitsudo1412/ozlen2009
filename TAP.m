@@ -27,7 +27,7 @@ for i = 1 : 3
     disp(fGubSolution(:, i)');
 end
 
-w3 = 1/((fGub(:, 2) - fGlb(:, 2) - 1)*(fGub(:, 3) - fGlb(:, 3) - 1));
+w3 = 1/((fGub(:, 2) - fGlb(:, 2) + 1)*(fGub(:, 3) - fGlb(:, 3) + 1));
 disp(['w_3 = ' num2str(w3)]);
 l3 = fGub(:, 3);
 disp(['l_3 = ' num2str(l3)]);
@@ -36,6 +36,8 @@ values = [];
 solutions = [];
 
 while 1
+    disp(['l3 <= ' num2str(l3)]);
+    
     [CWBOIPValues, CWBOIPSolutions] = solveCWBOIP(coefficientMatrix(:,:,1), coefficientMatrix(:,:,2), coefficientMatrix(:,:,3), w3, l3);
     if isempty(CWBOIPValues)
         break
@@ -57,10 +59,6 @@ while 1
     end
     
     l3 = l3 - 1;
-    
-    disp('Solutions found:');
-    disp(CWBOIPSolutions);
-    disp(['l3 = ' num2str(l3)]);
 end
 
 solutionTable = [];

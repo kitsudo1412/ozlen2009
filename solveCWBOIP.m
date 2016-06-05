@@ -18,6 +18,7 @@ w2 = 1/(f2Gub - f2Glb + 1);
 l2 = f2Gub;
 
 while 1
+    disp(['l2 <= ' num2str(l2)]);
     [CWSOIPValue,CWSOIPSolution] = solveCWSOIP(B1, B2, C3, w2, l2, l3);
     if CWSOIPValue == 0
         break
@@ -27,6 +28,10 @@ while 1
     f2value = calculateCost(B2, CWSOIPSolution);
     values = [values; f1value f2value];
     solutions = [solutions; CWSOIPSolution];
+    
+    disp('Non-dominated values:');
+    disp([calculateCost(C1, CWSOIPSolution) calculateCost(C2, CWSOIPSolution) calculateCost(C3, CWSOIPSolution)]);
+
     
     l2 = f2value - 1;
 end

@@ -13,5 +13,5 @@ c=zeros(size(p,1),1);
 I=eye(size(C,1));
 
 for i=1:size(p,1)
-	c(i)=sum(C(logical(sparse(p(i,:),1:size(C,1),1))));
+	c(i)=sum(C(logical(sparse(1:size(C,1),p(i,:),1))));
 end
