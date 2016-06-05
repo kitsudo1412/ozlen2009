@@ -64,7 +64,7 @@ solutionTable = [];
 [C, ia, ic] = unique(solutions, 'rows');
 ia = sort(ia);
 for i = 1 : length(ia)
-    solutionTable = [solutionTable; values(ia(i), :) calculateCost(coefficientMatrix(:,:,3), solutions(ia(i), :)) solutions(ia(i), :)];
+    solutionTable = [solutionTable; calculateCost(coefficientMatrix(:,:,1), solutions(ia(i), :)) calculateCost(coefficientMatrix(:,:,2), solutions(ia(i), :)) calculateCost(coefficientMatrix(:,:,3), solutions(ia(i), :)) solutions(ia(i), :)];
 end
 
 end
