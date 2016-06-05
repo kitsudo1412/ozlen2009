@@ -57,6 +57,10 @@ while 1
     end
     
     l3 = l3 - 1;
+    
+    disp('Solutions found:');
+    disp(CWBOIPSolutions);
+    disp(['l3 = ' num2str(l3)]);
 end
 
 solutionTable = [];
